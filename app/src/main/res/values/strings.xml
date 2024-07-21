@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RecipeShare</string>
+    <string name="recipies">My Recipes</string>
 </resources>

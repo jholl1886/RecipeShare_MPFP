@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/recipeDetailTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Recipe"
+        android:textSize="35sp"
+        android:layout_gravity="center"/>
+
+    <TableLayout
+        android:id="@+id/recipeDetails"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:stretchColumns="1">
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/NameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recipe Name:"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/NameEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="text" />
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/DescriptionTextView"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Description:" />
+
+    <EditText
+        android:id="@+id/descriptionEditText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:scrollbars="vertical"
+        android:inputType="textMultiLine"
+        android:maxLines="3"/>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/stepsTextView"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text="Steps:" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical"
+        android:maxLines="5"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="300dp">
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="85dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="200dp"
+            android:text="Back"/>
+
+        <Button
+            android:id="@+id/doneButton"
+            android:layout_width="85dp"
+            android:layout_height="50dp"
+            android:text="Done"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
