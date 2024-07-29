@@ -10,12 +10,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.zybooks.recipeshare.viewmodel.RecipeViewModel;
+import com.zybooks.recipeshare.model.Recipe;
+
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
     private Button addButton;
+    private RecipeViewModel recipeViewModel; //do this if you need the viewmodel anywhere else
 
 
     @Override
@@ -26,6 +33,12 @@ public class MainActivity extends AppCompatActivity {
        addButton = findViewById(R.id.AddButton);
 
        addButton.setOnClickListener(v -> addClick());
+
+        // Initialize the ViewModel
+        recipeViewModel = new ViewModelProvider(this).get(RecipeViewModel.class);
+
+        // Observe the LiveData list of recipes
+
 
     }
 
