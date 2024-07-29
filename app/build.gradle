@@ -36,10 +36,12 @@ dependencies {
     implementation libs.constraintlayout
     implementation libs.sqlite
     implementation libs.room.runtime
+    implementation libs.firebase.crashlytics.buildtools
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
     annotationProcessor libs.room.compiler
+    implementation 'com.google.code.gson:gson:2.8.9'
 
 
 }

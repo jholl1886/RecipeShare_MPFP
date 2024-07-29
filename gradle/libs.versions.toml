@@ -10,6 +10,7 @@ constraintlayout = "2.1.4"
 sqlite = "2.4.0"
 roomRuntime = "2.6.1"
 roomCompiler = "2.6.1"
+firebaseCrashlyticsBuildtools = "3.0.2"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -22,6 +23,7 @@ constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayo
 sqlite = { group = "androidx.sqlite", name = "sqlite", version.ref = "sqlite" }
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "roomRuntime" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomCompiler" }
+firebase-crashlytics-buildtools = { group = "com.google.firebase", name = "firebase-crashlytics-buildtools", version.ref = "firebaseCrashlyticsBuildtools" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
