@@ -11,6 +11,7 @@ sqlite = "2.4.0"
 roomRuntime = "2.6.1"
 roomCompiler = "2.6.1"
 firebaseCrashlyticsBuildtools = "3.0.2"
+roomCommon = "2.6.1"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -24,6 +25,7 @@ sqlite = { group = "androidx.sqlite", name = "sqlite", version.ref = "sqlite" }
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "roomRuntime" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomCompiler" }
 firebase-crashlytics-buildtools = { group = "com.google.firebase", name = "firebase-crashlytics-buildtools", version.ref = "firebaseCrashlyticsBuildtools" }
+room-common = { group = "androidx.room", name = "room-common", version.ref = "roomCommon" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
