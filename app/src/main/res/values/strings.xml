@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">RecipeShare</string>
     <string name="recipies">My Recipes</string>
+
+    <string-array name="recipes">
+        <item>Recipe one</item>
+        <item>Recipe two</item>
+        <item>Recipe three</item>
+        <item>Recipe four</item>
+    </string-array>
 </resources>
