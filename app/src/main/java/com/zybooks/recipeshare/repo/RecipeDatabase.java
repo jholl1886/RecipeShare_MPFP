@@ -7,12 +7,16 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.zybooks.recipeshare.model.Recipe;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 @Database(entities = {Recipe.class} ,version = 1)
 public abstract class RecipeDatabase extends RoomDatabase {
 
 
         private static RecipeDatabase instance;
-
+    private static final int NUMBER_OF_THREADS = 4;
+    static final ExecutorService databaseWriteExecutor =
+            Executors.newFixedThreadPool(NUMBER_OF_THREADS);
         public abstract RecipeDao recipeDao();
 
         public static synchronized RecipeDatabase getInstance(Context context)
@@ -33,6 +37,7 @@ public abstract class RecipeDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
+
 
         }
     };
