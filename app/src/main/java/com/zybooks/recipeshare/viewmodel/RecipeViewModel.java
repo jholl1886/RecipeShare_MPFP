@@ -47,4 +47,11 @@ public class RecipeViewModel extends AndroidViewModel
         return recipeRepository.getRecipeByName(name);
     }
 
+    public  int nextId()
+    {
+        // Assuming your RecipeRepository can access a method to get the max ID
+        int maxId = recipeRepository.getMaxRecipeId();
+        return maxId + 1;
+    }
+
 }

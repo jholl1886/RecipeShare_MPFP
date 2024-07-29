@@ -23,5 +23,8 @@ public interface RecipeDao  {
     @Query("SELECT * FROM Recipes WHERE name LIKE :name")
     LiveData<List<Recipe>> getRecipesByName(String name);
 
+    @Query("SELECT MAX(recipe_id) FROM Recipes")
+    Integer getMaxRecipeId();
+
 
 }
