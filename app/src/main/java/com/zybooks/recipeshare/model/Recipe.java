@@ -34,6 +34,10 @@ public class Recipe {
         this.ingredients = ingredients;
         this.steps = steps;
     }
+
+    public Recipe(String nameText){
+        this.name = nameText;
+    }
     // Getters and Setters
     public int getId() {
         return id;
