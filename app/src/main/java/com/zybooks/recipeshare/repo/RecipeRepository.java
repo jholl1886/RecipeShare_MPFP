@@ -61,6 +61,12 @@ public class RecipeRepository {
             return recipeDao.getRecipesByName(name);
         }
 
+        public int getMaxRecipeId()
+        {
+            Integer maxId = recipeDao.getMaxRecipeId();
+            return maxId != null ? maxId : 0;
+        }
+
     RoomDatabase.Callback databaseCallback = new RoomDatabase.Callback() {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {

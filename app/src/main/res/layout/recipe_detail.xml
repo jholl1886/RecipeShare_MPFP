@@ -1,97 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
-
-    <TextView
-        android:id="@+id/recipeDetailTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="My Recipe"
-        android:textSize="35sp"
-        android:layout_gravity="center"/>
-
-    <TableLayout
-        android:id="@+id/recipeDetails"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:stretchColumns="1">
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/NameTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Recipe Name:"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/NameEditText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:inputType="text" />
-        </TableRow>
-    </TableLayout>
-
-    <TextView
-        android:id="@+id/DescriptionTextView"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Description:" />
-
-    <EditText
-        android:id="@+id/descriptionEditText"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:scrollbars="vertical"
-        android:inputType="textMultiLine"
-        android:maxLines="3"/>
-
-    <TextView
-        android:layout_marginTop="20dp"
-        android:id="@+id/stepsTextView"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:text="Steps:" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:scrollbars="vertical"
-        android:maxLines="5"/>
-
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="300dp">
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context=".AddRecipeActivity">
 
-        <Button
-            android:id="@+id/backButton"
-            android:layout_width="85dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="200dp"
-            android:text="Back"/>
+        <!-- Existing views... -->
 
-        <Button
-            android:id="@+id/doneButton"
-            android:layout_width="85dp"
-            android:layout_height="50dp"
-            android:text="Done"/>
+        <TableLayout
+            android:id="@+id/recipeDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:stretchColumns="1">
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/NameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recipe Name:"
+                    android:textSize="20sp" />
+                <EditText
+                    android:id="@+id/NameEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="text"
+                    android:hint="Enter recipe name" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/numIngredientsTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Number of Ingredients:"
+                    android:textSize="20sp" />
+                <EditText
+                    android:id="@+id/numIngredientsEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:hint="Enter number of ingredients" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/numStepsTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Number of Steps:"
+                    android:textSize="20sp" />
+                <EditText
+                    android:id="@+id/numStepsEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:hint="Enter number of steps" />
+            </TableRow>
+        </TableLayout>
+
+        <LinearLayout
+            android:id="@+id/ingredientsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"/>
+
+        <LinearLayout
+            android:id="@+id/stepsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:text="Back"/>
+
+            <Button
+                android:id="@+id/doneButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Done"/>
+
+        </LinearLayout>
 
     </LinearLayout>
-
-
-
-</LinearLayout>
+</ScrollView>
