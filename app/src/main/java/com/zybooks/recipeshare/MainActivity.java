@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -75,9 +76,9 @@ public class MainActivity extends AppCompatActivity implements DeleteConfirmDial
     private class RecipeAdapter extends RecyclerView.Adapter<RecipeHolder>{
 
         private final List<Recipe> recipeList;
-        private final AppCompatActivity activityContext;
+        private final AppCompatActivity activityContext; //added to pass into Recipe Adapter so we can directly use the activty context without itemView.getContext()
 
-        public RecipeAdapter(AppCompatActivity context, List<Recipe> recipes) {
+        public RecipeAdapter(AppCompatActivity context, List<Recipe> recipes) { //needed to change recipe adapter
             activityContext = context;
             recipeList = recipes;
         }
@@ -106,15 +107,16 @@ public class MainActivity extends AppCompatActivity implements DeleteConfirmDial
 
     // Holder class for RecyclerView
     private class RecipeHolder extends RecyclerView.ViewHolder
-            implements View.OnClickListener {
+            implements View.OnClickListener,View.OnLongClickListener {
         private Recipe recipe;
         private final TextView recipeTextView;
         private Button DeleteButton;
-        private final AppCompatActivity activityContext;
-        public RecipeHolder(LayoutInflater inflater, ViewGroup parent,AppCompatActivity context){
+        private final AppCompatActivity activityContext; //same deal here
+        public RecipeHolder(LayoutInflater inflater, ViewGroup parent,AppCompatActivity context){ // with AppCompatActivity as a parameter ensures context is always the activity context we need
             super(inflater.inflate(R.layout.list_item_recipe, parent, false));
             activityContext = context;
             itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
             recipeTextView = itemView.findViewById(R.id.recipe_name);
             DeleteButton = itemView.findViewById(R.id.deleteButton);
 
@@ -133,6 +135,14 @@ public class MainActivity extends AppCompatActivity implements DeleteConfirmDial
             Intent intent = new Intent(MainActivity.this, AddRecipeActivity.class);
             startActivity(intent);
         }
+        @Override
+        public boolean onLongClick(View view) {
+            // Define your long click action here
+            // For example, showing a toast, opening a context menu, etc.
+            Toast.makeText(activityContext, "Long clicked: " + recipe.getName(), Toast.LENGTH_SHORT).show();
+            return true; // Return true if the callback consumed the long click, false otherwise
+        }
+
     }
 
     @Override
