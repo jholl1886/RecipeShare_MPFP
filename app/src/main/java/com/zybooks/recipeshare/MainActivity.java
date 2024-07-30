@@ -2,6 +2,7 @@ package com.zybooks.recipeshare;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.zybooks.recipeshare.model.Recipe;
 import com.zybooks.recipeshare.viewmodel.RecipeViewModel;
 
@@ -26,7 +26,7 @@ import com.zybooks.recipeshare.viewmodel.RecipeViewModel;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DeleteConfirmDialogFragment.ConfirmDeleteListener {
     private Button addButton;
     private RecipeViewModel recipeViewModel; //do this if you need the viewmodel anywhere else
     private RecyclerView RecipeListView; // used to view the recipes
@@ -104,11 +104,22 @@ public class MainActivity extends AppCompatActivity {
             implements View.OnClickListener {
         private Recipe recipe;
         private final TextView recipeTextView;
+        private Button DeleteButton;
 
         public RecipeHolder(LayoutInflater inflater, ViewGroup parent){
             super(inflater.inflate(R.layout.list_item_recipe, parent, false));
             itemView.setOnClickListener(this);
             recipeTextView = itemView.findViewById(R.id.recipe_name);
+            DeleteButton = itemView.findViewById(R.id.deleteButton);
+
+            DeleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                   DeleteConfirmDialogFragment dialog = new DeleteConfirmDialogFragment();
+                   dialog.SetRecipe(recipe, recipeViewModel);
+                   dialog.show(((AppCompatActivity)itemView.getContext()).getSupportFragmentManager(), "ConfirmDeletion");
+                }
+            });
         }
 
         public void bind(Recipe recipeBind, int position){
@@ -121,4 +132,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onDeleteConfirmed(Recipe recipe){
+        Log.e("Delete called", "Delete was called");
+        recipeViewModel.delete(recipe);
+    }
 }
