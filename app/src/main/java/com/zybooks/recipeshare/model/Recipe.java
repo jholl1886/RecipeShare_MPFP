@@ -38,6 +38,11 @@ public class Recipe {
     public Recipe(String nameText){
         this.name = nameText;
     }
+
+    public Recipe()
+    {
+
+    }
     // Getters and Setters
     public int getId() {
         return id;
