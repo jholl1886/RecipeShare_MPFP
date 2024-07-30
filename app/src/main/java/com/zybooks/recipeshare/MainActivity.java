@@ -137,10 +137,10 @@ public class MainActivity extends AppCompatActivity implements DeleteConfirmDial
         }
         @Override
         public boolean onLongClick(View view) {
-            // Define your long click action here
-            // For example, showing a toast, opening a context menu, etc.
-            Toast.makeText(activityContext, "Long clicked: " + recipe.getName(), Toast.LENGTH_SHORT).show();
-            return true; // Return true if the callback consumed the long click, false otherwise
+            Intent intent = new Intent(activityContext, RecipeViewActivity.class);
+            intent.putExtra("recipeId", recipe.getId());
+            activityContext.startActivity(intent);
+            return true;
         }
 
     }
