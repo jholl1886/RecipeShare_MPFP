@@ -1,5 +1,6 @@
 package com.zybooks.recipeshare;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -59,8 +60,8 @@ public class MainActivity extends AppCompatActivity implements DeleteConfirmDial
     }
 
     private void updateUI(List<Recipe> recipeList) {
-       recipeAdapter = new RecipeAdapter(recipeList);
-       RecipeListView.setAdapter(recipeAdapter);
+        recipeAdapter = new RecipeAdapter(this, recipeList);
+        RecipeListView.setAdapter(recipeAdapter);
     }
 
 
@@ -74,13 +75,17 @@ public class MainActivity extends AppCompatActivity implements DeleteConfirmDial
     private class RecipeAdapter extends RecyclerView.Adapter<RecipeHolder>{
 
         private final List<Recipe> recipeList;
+        private final AppCompatActivity activityContext;
 
-        public RecipeAdapter(List<Recipe> recipes) { recipeList = recipes; }
+        public RecipeAdapter(AppCompatActivity context, List<Recipe> recipes) {
+            activityContext = context;
+            recipeList = recipes;
+        }
         @NonNull
         @Override
         public RecipeHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
-            LayoutInflater layoutInflater = LayoutInflater.from(getApplicationContext());
-            return new RecipeHolder(layoutInflater, parent);
+            LayoutInflater layoutInflater = LayoutInflater.from(activityContext);
+            return new RecipeHolder(layoutInflater, parent, activityContext);
         }
 
         @Override
@@ -105,20 +110,18 @@ public class MainActivity extends AppCompatActivity implements DeleteConfirmDial
         private Recipe recipe;
         private final TextView recipeTextView;
         private Button DeleteButton;
-
-        public RecipeHolder(LayoutInflater inflater, ViewGroup parent){
+        private final AppCompatActivity activityContext;
+        public RecipeHolder(LayoutInflater inflater, ViewGroup parent,AppCompatActivity context){
             super(inflater.inflate(R.layout.list_item_recipe, parent, false));
+            activityContext = context;
             itemView.setOnClickListener(this);
             recipeTextView = itemView.findViewById(R.id.recipe_name);
             DeleteButton = itemView.findViewById(R.id.deleteButton);
 
-            DeleteButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                   DeleteConfirmDialogFragment dialog = new DeleteConfirmDialogFragment();
-                   dialog.SetRecipe(recipe, recipeViewModel);
-                   dialog.show(((AppCompatActivity)itemView.getContext()).getSupportFragmentManager(), "ConfirmDeletion");
-                }
+            DeleteButton.setOnClickListener(v -> {
+                DeleteConfirmDialogFragment dialog = new DeleteConfirmDialogFragment();
+                dialog.SetRecipe(recipe, recipeViewModel);
+                dialog.show(activityContext.getSupportFragmentManager(), "ConfirmDeletion");
             });
         }
 
