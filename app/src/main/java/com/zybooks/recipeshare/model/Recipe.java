@@ -5,6 +5,8 @@ import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
 import androidx.room.TypeConverters;
 import com.zybooks.recipeshare.Converters;
+
+import java.io.Serializable;
 import java.util.List;
 
 @Entity(tableName = "Recipes")
@@ -38,6 +40,7 @@ public class Recipe {
     public Recipe(String nameText){
         this.name = nameText;
     }
+
     // Getters and Setters
     public int getId() {
         return id;
